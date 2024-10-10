@@ -34,8 +34,8 @@ const NavigationBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           {/* Center navigation links */}
           <Nav className="mx-auto">
-            <Nav.Link as={Link} to="/community" className="text-dark" onClick={handleClose}>
-              Community
+            <Nav.Link as={Link} to="/" className="text-dark" onClick={handleClose}>
+             Home
             </Nav.Link>
             <Nav.Link as={Link} to="/jobs" className="text-dark" onClick={handleClose}>
               Jobs
@@ -43,11 +43,11 @@ const NavigationBar = () => {
             <Nav.Link as={Link} to="/projects" className="text-dark" onClick={handleClose}>
               Projects
             </Nav.Link>
-            <Nav.Link as={Link} to="/salaries" className="text-dark" onClick={handleClose}>
-              Salaries
+            <Nav.Link as={Link} to="/trainer" className="text-dark" onClick={handleClose}>
+              Trainers
             </Nav.Link>
-            <Nav.Link as={Link} to="/employers" className="text-dark" onClick={handleClose}>
-              For Employers
+            <Nav.Link as={Link} to="/workers" className="text-dark" onClick={handleClose}>
+              Workers
             </Nav.Link>
           </Nav>
 

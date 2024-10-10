@@ -12,6 +12,9 @@ import ApplyFormStep3 from './Components/ApplyFormStep3/ApplyFormStep3';
 import ApplyFormStep4 from './Components/ApplyFormStep4/ApplyFormStep4';
 import ApplyFormReview from './Components/ApplyFormReview/ApplyFormReview';
 import ProjectsAvailable from './Components/ProjectsAvailable/ProjectsAvailable';
+import Login from './Components/Login/Login';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+import Home from './Components/Home/Home';
 
 // Sample job data for demonstration
 const jobsData = [
@@ -39,29 +42,89 @@ const App = () => {
     setFormData({ ...formData, ...newData });
   };
 
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false); // Track login state
+
+ 
+
   return (
     <Router>
-      <NavigationBar />
-      <Routes>
-        {/* Job List route */}
-        <Route path="/jobs" element={<JobList jobs={jobs} />} />
-        <Route path='/projects' element={<ProjectsAvailable />}/>
+    <NavigationBar />
+    <Routes>
+      {/* Public Routes */}
+      <Route path='/login' element={<Login setIsAuthenticated={setIsAuthenticated} />} />
+      <Route path='/register' element={<RegistrationForm />} />
+      <Route path='/' element={<Home />} />
 
-        {/* Job Detail route with dynamic parameter */}
-        <Route path="/jobs/:id" element={<JobDetailWrapper jobs={jobs} />} />
-        
-        {/* Register route */}
-        <Route path="/register" element={<RegistrationForm />} />
-
-        {/* Apply Form routes */}
-        <Route path="/apply" element={<ApplyFormStep1 formData={formData} updateFormData={updateFormData} />} />
-        <Route path="/add-resume" element={<ApplyFormStep2 formData={formData} updateFormData={updateFormData} />} />
-       <Route path="/questions" element={<ApplyFormStep3 formData={formData} updateFormData={updateFormData} />} />
-       <Route path="/salaries" element={<ApplyFormStep4 formData={formData} updateFormData={updateFormData} />} />
-       <Route path="/review" element={<ApplyFormReview formData={formData} />} />
-
-      </Routes>
-    </Router>
+      {/* Protected Routes */}
+      <Route
+        path="/jobs"
+        element={
+          <PrivateRoute isAuthenticated={isAuthenticated}>
+            <JobList jobs={jobs} />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/jobs/:id"
+        element={
+          <PrivateRoute isAuthenticated={isAuthenticated}>
+            <JobDetailWrapper jobs={jobs} />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/projects"
+        element={
+          <PrivateRoute isAuthenticated={isAuthenticated}>
+            <ProjectsAvailable />
+          </PrivateRoute>
+        }
+      />
+      
+      {/* Apply Form Steps Protected */}
+      <Route
+        path="/apply"
+        element={
+          <PrivateRoute isAuthenticated={isAuthenticated}>
+            <ApplyFormStep1 formData={formData} updateFormData={updateFormData} />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/add-resume"
+        element={
+          <PrivateRoute isAuthenticated={isAuthenticated}>
+            <ApplyFormStep2 formData={formData} updateFormData={updateFormData} />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/questions"
+        element={
+          <PrivateRoute isAuthenticated={isAuthenticated}>
+            <ApplyFormStep3 formData={formData} updateFormData={updateFormData} />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/salaries"
+        element={
+          <PrivateRoute isAuthenticated={isAuthenticated}>
+            <ApplyFormStep4 formData={formData} updateFormData={updateFormData} />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/review"
+        element={
+          <PrivateRoute isAuthenticated={isAuthenticated}>
+            <ApplyFormReview formData={formData} />
+          </PrivateRoute>
+        }
+      />
+    </Routes>
+  </Router>
   );
 };
 
