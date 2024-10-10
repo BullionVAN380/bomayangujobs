@@ -1,0 +1,10 @@
+/* Custom Navbar background */
+.navbar {
+  background-color: #004466;
+}
+
+/* Custom button color */
+.btn-primary {
+  background-color: #006699;
+  border: none;
+}
