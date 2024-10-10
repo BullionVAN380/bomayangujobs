@@ -20,25 +20,30 @@ function ApplyFormStep2({ formData, updateFormData }) {
     };
 
     return (
-        <div className="container mt-5">
-            <form onSubmit={handleSubmit} className="p-4 border rounded shadow-sm">
-                <h2 className="mb-4">Add a resume for the employer</h2>
-                
-                <div className="mb-3">
-                    <label htmlFor="resume" className="form-label">Upload Resume</label>
-                    <input 
-                        type="file" 
-                        name="resume" 
-                        id="resume" 
-                        className="form-control" 
-                        onChange={handleFileChange} 
-                        required 
-                    />
-                </div>
-
-                <button type="submit" className="btn btn-primary">Continue</button>
-            </form>
-        </div>
+      <div className="container mt-5"> {/* Bootstrap container for responsiveness */}
+      <div className="row justify-content-center">
+          <div className="col-12 col-lg-6"> {/* Full width on small screens, 50% on large screens */}
+              <form onSubmit={handleSubmit} className="p-4 border rounded shadow-sm">
+                  <h2 className="mb-4">Add a resume for the employer</h2>
+                  
+                  <div className="mb-3">
+                      <label htmlFor="resume" className="form-label">Upload Resume</label>
+                      <input 
+                          type="file" 
+                          name="resume" 
+                          id="resume" 
+                          className="form-control" 
+                          onChange={handleFileChange} 
+                          required 
+                      />
+                  </div>
+  
+                  <button type="submit" className="btn btn-primary">Continue</button>
+              </form>
+          </div>
+      </div>
+  </div>
+  
     );
 }
 

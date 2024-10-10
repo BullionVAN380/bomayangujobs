@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import NavigationBar from './Components/Navbar';
+import NavigationBar from './Components/Navbar/Navbar';
 import JobList from './Components/JobList/JobList';
 import JobDetail from './Components/JobDetail';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -11,6 +11,7 @@ import ApplyFormStep2 from './Components/ApplyFormStep2/ApplyFormStep2';
 import ApplyFormStep3 from './Components/ApplyFormStep3/ApplyFormStep3';
 import ApplyFormStep4 from './Components/ApplyFormStep4/ApplyFormStep4';
 import ApplyFormReview from './Components/ApplyFormReview/ApplyFormReview';
+import ProjectsAvailable from './Components/ProjectsAvailable/ProjectsAvailable';
 
 // Sample job data for demonstration
 const jobsData = [
@@ -44,6 +45,7 @@ const App = () => {
       <Routes>
         {/* Job List route */}
         <Route path="/jobs" element={<JobList jobs={jobs} />} />
+        <Route path='/projects' element={<ProjectsAvailable />}/>
 
         {/* Job Detail route with dynamic parameter */}
         <Route path="/jobs/:id" element={<JobDetailWrapper jobs={jobs} />} />
