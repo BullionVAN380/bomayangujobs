@@ -94,9 +94,9 @@ function ApplyFormStep4({ formData = {}, updateFormData }) {
         onChange={handleInputChange}
     >
         <option value="">Select an option</option>
+        <option value="KSH">KSH</option>
         <option value="USD">USD</option>
-        <option value="EUR">EUR</option>
-        <option value="GBP">GBP</option>
+        <option value="URO">URO</option>
     </select>
 </div>
 
